@@ -21,3 +21,11 @@ local_path_override(
     module_name = "brotli",
     path = "..",
 )
+
+maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+maven.install(
+    artifacts = [
+        "org.jetbrains.kotlinx:kotlinx-io-core-jvm:0.7.0",
+    ],
+)
+use_repo(maven, "maven")

@@ -7,7 +7,7 @@ _TEST_JVM_FLAGS = [
 ]
 
 _KOTLIN_DECODER_DEPS = [
-    "//org/brotli/dec/kt:dec",
+    "//org/brotli/dec/kt:test_compat",
 ]
 
 def brotli_java_test(name, main_class = None, jvm_flags = None, test_kotlin = False, runtime_deps = [], **kwargs):
@@ -56,7 +56,7 @@ def brotli_java_test(name, main_class = None, jvm_flags = None, test_kotlin = Fa
             name = name + "_kt",
             main_class = main_class,
             test_class = test_class,
-            jvm_flags = jvm_flags + ["-DBROTLI_INPUT_STREAM=org.brotli.dec.kt.BrotliInputStream"],
+            jvm_flags = jvm_flags + ["-DBROTLI_INPUT_STREAM=org.brotli.dec.kt.BrotliInputStreamCompat"],
             visibility = ["//visibility:private"],
             runtime_deps = runtime_deps + _KOTLIN_DECODER_DEPS,
             **kwargs

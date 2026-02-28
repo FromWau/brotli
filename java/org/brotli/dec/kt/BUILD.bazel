@@ -10,8 +10,21 @@ licenses(["notice"])  # MIT
 kt_jvm_library(
     name = "dec",
     srcs = [
-        "BrotliInputStream.kt",
+        "BrotliInputSource.kt",
         "Decode.kt",
     ],
     visibility = ["//visibility:public"],
+    deps = [
+        "@maven//:org_jetbrains_kotlinx_kotlinx_io_core_jvm",
+    ],
+)
+
+kt_jvm_library(
+    name = "test_compat",
+    srcs = ["BrotliInputStreamCompat.kt"],
+    visibility = ["//visibility:public"],
+    deps = [
+        ":dec",
+        "@maven//:org_jetbrains_kotlinx_kotlinx_io_core_jvm",
+    ],
 )
